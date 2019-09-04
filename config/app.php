@@ -174,6 +174,8 @@ return [
         // Otecnya\Providers\BroadcastServiceProvider::class,
         Otecnya\Providers\EventServiceProvider::class,
         Otecnya\Providers\RouteServiceProvider::class,
+       // provider añadido para laravel collective
+        Collective\Html\HtmlServiceProvider::class,
 
     ],
 
@@ -225,6 +227,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 
