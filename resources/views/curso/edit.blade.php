@@ -2,8 +2,17 @@
 
 @section('title', 'Editar Cursos')
 @section('content')
+    @include('common.errors')
+    @include('common.success')
 
-    <form class="form-group" method="POST" action="/cursos/{{ $curso->id}}" enctype="multipart/form-data" >
+    {!! Form::model($curso, ['route' => ['cursos.update', $curso], 'method' => 'PUT', 'files' => true]) !!}
+
+        @include('curso.form')
+
+    {!! Form::submit('Actualizar', ['class' => 'btn btn-primary']) !!}
+    {!! Form::close() !!}
+
+    <!--<form class="form-group" method="POST" action="/cursos/{{ $curso->id}}" enctype="multipart/form-data" >
         @method('PUT')
         @csrf
         <div class="form-group">
@@ -22,6 +31,6 @@
                 </div>
         
         <button type="submit" class="btn btn-primary">Actualizar</button>
-    </form>
+    </form> -->
     
 @endsection

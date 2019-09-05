@@ -16,3 +16,7 @@ Route::get('/', function () {
 });
 Route::resource('cursos','CursoController');
 Route::resource('empleados','EmpleadoController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

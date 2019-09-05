@@ -2,7 +2,7 @@
 
 @section('title', 'Cursos')
 @section('content')
-
+  @include('common.success')
     <table class="table table-striped">
             <thead>
               <tr>
@@ -23,7 +23,11 @@
                     <td>{{ $curso->name}}</td>
                     <td>{{ $curso->descrip}}</td>
                     <td><a class="btn btn-primary" href="/cursos/{{ $curso->id}}/edit">Editar</a></td>
-                    <td><a class="btn btn-danger" href="">Eliminar</a></td>
+                    <td>
+                       {!! Form::open(['route' => ['cursos.destroy', $curso->id], 'method' => 'DELETE']) !!}
+                         {!! Form::submit('Eliminar', ['class' => 'btn btn-danger']) !!}
+                        {!! Form::close() !!}
+                    </td>
                 </tr>
               @endforeach
               
