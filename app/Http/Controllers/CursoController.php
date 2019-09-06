@@ -15,8 +15,9 @@ class CursoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->user()->authorizedRoles('admin');
         $cursos = Curso::all();
 
         return view('curso.index', compact('cursos'));

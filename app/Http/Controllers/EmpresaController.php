@@ -3,6 +3,7 @@
 namespace Otecnya\Http\Controllers;
 
 use Illuminate\Http\Request;
+use  Otecnya\Empresa;
 
 class EmpresaController extends Controller
 {
@@ -13,7 +14,9 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        //
+        $empresas = Empresa::all();
+
+        return view('empresa.index', compact('empresas'));
     }
 
     /**
@@ -23,7 +26,7 @@ class EmpresaController extends Controller
      */
     public function create()
     {
-        //
+        return view('empresa.create');
     }
 
     /**
@@ -34,7 +37,13 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $empresa = new Empresa();
+        $empresa->name = $request->input('name');
+        $empresa->description = $request->input('description');
+       
+        $empresa->save();
+        return redirect()->route('empresas.create')->with('status', 'El curso a sido agregado correctamente.');
+      
     }
 
     /**
@@ -43,9 +52,9 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Empresa $empresa)
     {
-        //
+        return view('empresa.show', compact('empresa'));
     }
 
     /**
@@ -54,9 +63,9 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Empresa $empresa)
     {
-        //
+        return view('empresa.edit', compact('empresa'));
     }
 
     /**
@@ -66,9 +75,20 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Empresa $empresa)
     {
-        //
+        
+        $validateData = $request->validate([
+            'name' => 'required',
+            'description' => 'required'
+            
+        ]);
+
+        $empresa->name = $request->input('name');
+        $empresa->description = $request->input('description');
+        $empresa->save();
+        
+        return redirect()->route('empresas.edit', [$empresa])->with('status', 'La empresa a sido actualizado correctamente.');
     }
 
     /**
@@ -77,8 +97,9 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Empresa $empresa)
     {
-        //
+        $empresa->delete();
+        return redirect()->route('empresas.index')->with('status', 'El curso a sido eliminado correctamente.');;
     }
 }
