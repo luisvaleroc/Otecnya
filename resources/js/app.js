@@ -19,9 +19,11 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('empleado-component', require('./components/EmpleadosComponent.vue').default);
 
+Vue.component('list-of-empleados', require('./components/empleados/list.vue').default);
+Vue.component('spinner', require('./components/widgets/Spinner.vue').default);
+Vue.component('modal-button-empleado', require('./components/empleados/add.vue').default);
+Vue.component('create-form-empleado', require('./components/empleados/create.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

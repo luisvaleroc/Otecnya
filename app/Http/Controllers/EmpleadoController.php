@@ -12,11 +12,15 @@ class EmpleadoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if($request->ajax()){
+            $empleados = Empleado::all();
+            return response()->json($empleados, 200);
+        }
         $empleados = Empleado::all();
 
-        return view('empleado.index', compact('empleados'));
+        return view('empleado.index');
     }
 
     /**
@@ -37,11 +41,18 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        $empleado = new Empleado();
-        $empleado->name = $request->input('name');
-        $empleado->rut = $request->input('rut');
-        $empleado->save();
-        return 'saved';
+        if($request->ajax()){
+        
+            $empleado = new Empleado();
+            $empleado->name = $request->input('name');
+            $empleado->rut = $request->input('rut');
+            $empleado->save();
+
+            return response()->json([
+                "message" => "Empleado creado correctamente.",
+                "empleado" => $empleado
+            ], 200);    
+        }
     }
 
     /**
@@ -50,9 +61,9 @@ class EmpleadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Empleado $empleado)
     {
-        //
+        return view('empleado.show', compact('empleado'));
     }
 
     /**
