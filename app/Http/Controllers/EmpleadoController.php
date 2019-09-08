@@ -3,6 +3,7 @@
 namespace Otecnya\Http\Controllers;
 
 use  Otecnya\Empleado;
+use  Otecnya\Empresa;
 use Illuminate\Http\Request;
 
 class EmpleadoController extends Controller
@@ -12,10 +13,10 @@ class EmpleadoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Empresa $empresa, Request $request)
     {
         if($request->ajax()){
-            $empleados = Empleado::all();
+            $empleados = $empresa->empleados;
             return response()->json($empleados, 200);
         }
         $empleados = Empleado::all();
@@ -39,16 +40,19 @@ class EmpleadoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Empresa $empresa, Request $request)
     {
         if($request->ajax()){
         
             $empleado = new Empleado();
             $empleado->name = $request->input('name');
             $empleado->rut = $request->input('rut');
+            $empleado->empresa_id = $request->input('empresa_id');
+            $empleado->empresa()->associate($empresa)->save();
             $empleado->save();
 
             return response()->json([
+                //"empresa" => $empresa,
                 "message" => "Empleado creado correctamente.",
                 "empleado" => $empleado
             ], 200);    
@@ -95,8 +99,8 @@ class EmpleadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Empleado $empleado)
     {
-        //
+        $empleado->delete();
     }
 }

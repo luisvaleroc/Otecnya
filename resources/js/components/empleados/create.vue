@@ -37,7 +37,9 @@ export default {
     },
     methods: {
         saveEmpleado: function() {
-            axios.post('http://127.0.0.1:8000/empleados/', {
+            let currentRoute = window.location.pathname;
+            console.log(currentRoute)
+            axios.post(`http://127.0.0.1:8000${currentRoute}/empleados/`, {
                 name: this.name,
                 rut: this.rut
             })

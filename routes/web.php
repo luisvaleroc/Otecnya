@@ -15,8 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('cursos','CursoController');
-Route::resource('empleados','EmpleadoController');
+//Route::resource('empleados','EmpleadoController');
+Route::get('empresas/{empresa}/empleados','EmpleadoController@index');
 Route::resource('empresas','EmpresaController');
+Route::post('empresas/{empresa}/empleados','EmpleadoController@store');
 
 
 Auth::routes();

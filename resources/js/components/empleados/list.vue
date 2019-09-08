@@ -1,6 +1,6 @@
 <template>
 <div>
-    <spinner-component v-show="loading"></spinner-component>
+    <spinner v-show="loading"></spinner>
 <table class="table table-striped">
             <thead>
               <tr>
@@ -22,7 +22,7 @@
                     <td>{{ empleado.rut}}</td>
                     
                     <td><a class="btn btn-primary" href="/empleados/">Ver mas</a></td>
-                    <td><a class="btn btn-primary" href="/empleados/{}/edit">Editar</a></td>
+                    <td><a class="btn btn-primary" href="/empleados/1/edit">Editar</a></td>
                     <td>
                        
                     </td>
@@ -57,8 +57,9 @@
         },
         mounted() {
            // axios.get('http://127.0.0.1:8000/empleados').then(response => (this.empleados = response.data))
+           let currentRoute = window.location.pathname
            axios
-            .get('http://127.0.0.1:8000/empleados/')
+            .get(`http://127.0.0.1:8000${currentRoute}/empleados/`)
             .then((response) => {
                 this.empleados = response.data
                 this.loading = false

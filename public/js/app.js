@@ -1755,7 +1755,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     saveEmpleado: function saveEmpleado() {
-      axios.post('http://127.0.0.1:8000/empleados/', {
+      var currentRoute = window.location.pathname;
+      console.log(currentRoute);
+      axios.post("http://127.0.0.1:8000".concat(currentRoute, "/empleados/"), {
         name: this.name,
         rut: this.rut
       }).then(function (response) {
@@ -1841,7 +1843,8 @@ __webpack_require__.r(__webpack_exports__);
     var _this2 = this;
 
     // axios.get('http://127.0.0.1:8000/empleados').then(response => (this.empleados = response.data))
-    axios.get('http://127.0.0.1:8000/empleados/').then(function (response) {
+    var currentRoute = window.location.pathname;
+    axios.get("http://127.0.0.1:8000".concat(currentRoute, "/empleados/")).then(function (response) {
       _this2.empleados = response.data;
       _this2.loading = false;
     });
@@ -38086,7 +38089,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("spinner-component", {
+      _c("spinner", {
         directives: [
           {
             name: "show",
@@ -38164,7 +38167,7 @@ var staticRenderFns = [
         "a",
         {
           staticClass: "btn btn-primary",
-          attrs: { href: "/empleados/{}/edit" }
+          attrs: { href: "/empleados/1/edit" }
         },
         [_vm._v("Editar")]
       )
