@@ -21,6 +21,14 @@ Route::resource('empresas','EmpresaController');
 Route::post('empresas/{empresa}/empleados','EmpleadoController@store');
 
 
+//Route::resource('notas','NotaController');
+//Route::resource('notas','NotaController');
+Route::get('cursos/{curso}/notas','NotaController@create');
+Route::post('cursos/{curso}/notas','NotaController@store');
+Route::get('notas/{nota}/edit','NotaController@edit');
+
+Route::resource('notas','NotaController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
