@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Str;
+//agregado por mi heroku
+$DATABASE_URL = parse_url('postgres://gpbadxoetnzhew:45cacc9b3b699d4738189b2d3616a1b9daa6d3ea53b0617c09000c647e2d4918@ec2-174-129-208-118.compute-1.amazonaws.com:5432/dapd5m0j507ufl
+');
 
+//fin agregado por mi
 return [
 
     /*
@@ -15,7 +19,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -66,11 +70,11 @@ return [
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', 'ec2-174-129-208-118.compute-1.amazonaws.com'),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'username' => env('DB_USERNAME', 'gpbadxoetnzhew'),
+            'password' => env('DB_PASSWORD', 'dapd5m0j507ufl'),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
