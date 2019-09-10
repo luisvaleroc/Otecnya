@@ -6,10 +6,8 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">nombre</th>
-                
-                <th scope="col">Editar</th>
-                <th scope="col">Eliminar</th>
-                
+                <th scope="col">RUT</th>
+              
               </tr>
             </thead>
             <tbody>
@@ -20,13 +18,7 @@
                     <th scope="row">{{ empleado.id}}</th>
                     <td>{{ empleado.name}}</td>
                     <td>{{ empleado.rut}}</td>
-                    
-                    <td><a class="btn btn-primary" href="/empleados/">Ver mas</a></td>
-                    <td><a class="btn btn-primary" href="/empleados/1/edit">Editar</a></td>
-                    <td>
-                       
-                    </td>
-
+                 
 
                 </tr>
 

@@ -11,6 +11,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/fons/js/all.js') }}" defer></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -71,10 +73,31 @@
                 </div>
             </div>
         </nav>
-
-        <main class="container">
-            @yield('content')
-        </main>
+        <!-- contenido-->
+        <div class="row">
+            <div class="col-md-2">
+                <nav class="nav flex-column">
+                    <a class="nav-link active" href="/cursos">Cursos</a>
+                    <a class="nav-link" href="/empresas">Empresas</a>
+                    
+                  </nav>
+            </div>
+            <div class="col-sm-10">
+   
+    
+                <main class="container">
+                    @yield('content')
+                </main>
+    
+            </div>
+          </div>
+          <!-- fin contenido -->
+       
     </div>
+    
+  
+
+
+
 </body>
 </html>

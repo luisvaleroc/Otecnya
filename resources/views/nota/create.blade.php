@@ -35,7 +35,7 @@
                 <td>{{ $empleado->name}}</td>
                 <td>{{ $empleado->note}}</td>
                 <td>{{ $empleado->time}}</td>
-                @if ($empleado->note > 94)
+                @if ($empleado->note > 80)
                 <td>Aprobado</td>
             @else
             <td>Reprobado</td>
@@ -60,12 +60,5 @@
 
 
 
-    @foreach($empleados as $empleado)
-    <tr>
-        <th scope="row">{{ $empleado->name}}</th>
-        <td>{{ $empleado->note}}</td>
-        <td>{{ $empleado->time}}</td>
-
-  @endforeach
     
 @endsection

@@ -37,12 +37,17 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
+        $validateData = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+           
+       ]);
         $empresa = new Empresa();
         $empresa->name = $request->input('name');
         $empresa->description = $request->input('description');
        
         $empresa->save();
-        return redirect()->route('empresas.create')->with('status', 'El curso a sido agregado correctamente.');
+        return redirect()->route('empresas.create')->with('status', 'La empresa a sido agregada correctamente.');
       
     }
 

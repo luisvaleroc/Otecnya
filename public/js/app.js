@@ -1816,14 +1816,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -38113,13 +38105,7 @@ var render = function() {
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(empleado.name))]),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(empleado.rut))]),
-              _vm._v(" "),
-              _vm._m(1, true),
-              _vm._v(" "),
-              _vm._m(2, true),
-              _vm._v(" "),
-              _c("td")
+              _c("td", [_vm._v(_vm._s(empleado.rut))])
             ])
           }),
           0
@@ -38140,37 +38126,8 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("nombre")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Editar")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Eliminar")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("RUT")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "a",
-        { staticClass: "btn btn-primary", attrs: { href: "/empleados/" } },
-        [_vm._v("Ver mas")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-primary",
-          attrs: { href: "/empleados/1/edit" }
-        },
-        [_vm._v("Editar")]
-      )
     ])
   }
 ]
