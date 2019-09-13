@@ -9,9 +9,14 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/fons/js/all.js') }}" defer></script>
+    <!-- datatables -->
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
+
+
+<script src="{{ asset('js/fons/js/all.js') }}" defer></script>
 
 
     <!-- Fonts -->
@@ -96,8 +101,9 @@
     </div>
     
   
+<!--    <script src="{{ asset('js/app.js') }}" defer></script>-->
 
-
+   
 
 </body>
 </html>

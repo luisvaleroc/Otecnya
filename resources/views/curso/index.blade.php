@@ -4,16 +4,16 @@
 @section('content')
   @include('common.success')
   <a class="btn btn-primary" href="/cursos/create">agregar</a>
-    <table class="table table-striped">
+    <table  id="cursos" class="table table-striped">
     
       
             <thead>
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Imagen</th>
-                <th scope="col">nombre</th>
-               
+                <th scope="col">nombre</th>               
                 <th scope="col">Descripcion</th>
+                <th scope="col">Ver Notas</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Eliminar</th>
                 
@@ -41,7 +41,7 @@
                    
                     <td>
                        {!! Form::open(['route' => ['cursos.destroy', $curso->id], 'method' => 'DELETE']) !!}
-                         {!! Form::submit('Eliminar', ['class' => 'btn btn-danger']) !!}
+                         {!! Form::submit('Eliminar', ['class' => 'btn btn-danger','onClick' => 'return confirm("¿Seguro desea eliminar este registro?");'  ]) !!}
                         {!! Form::close() !!}
                     </td>
                 </tr>
@@ -51,5 +51,22 @@
           </table>
 
 
+          <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+
+          <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+          
+          
+          <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+          
+          <script>
+          $(document).ready(function() {
+          $('#cursos').DataTable();
+          } );
+          
+          </script>
+          
+    
 
 @endsection
+

@@ -15,7 +15,7 @@
 
 
 
-    <table class="table table-striped">
+    <table id="notas" class="table table-striped">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -57,6 +57,22 @@
 
 
 
+
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+
+      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+      
+      
+      <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+      
+      <script>
+      $(document).ready(function() {
+      $('#notas').DataTable();
+      } );
+      
+      </script>
+      
 
 
 

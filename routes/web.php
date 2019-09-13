@@ -14,19 +14,27 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+//rutas para los cursos
 Route::resource('cursos','CursoController');
 //Route::resource('empleados','EmpleadoController');
-Route::get('empresas/{empresa}/empleados','EmpleadoController@index');
+
+
+//rutas para las empresas
 Route::resource('empresas','EmpresaController');
+
+//rutas para los empleados
+Route::get('empresas/{empresa}/empleados','EmpleadoController@index');
 Route::post('empresas/{empresa}/empleados','EmpleadoController@store');
+Route::get('empleados/{nota}/edit','EmpleadoController@edit');
+Route::resource('empleados','EmpleadoController');
 
 
-//Route::resource('notas','NotaController');
-//Route::resource('notas','NotaController');
+//ritas para las notas
 Route::get('cursos/{curso}/notas','NotaController@create');
 Route::post('cursos/{curso}/notas','NotaController@store');
 Route::get('notas/{nota}/edit','NotaController@edit');
-
 Route::resource('notas','NotaController');
 
 Auth::routes();

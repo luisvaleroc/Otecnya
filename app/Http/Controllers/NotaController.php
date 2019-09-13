@@ -30,6 +30,7 @@ class NotaController extends Controller
      */
     public function create(Curso $curso, Nota $nota)
     {
+      
         $empleados = DB::table('empleados')
             ->join('notas', 'empleados.id', '=', 'notas.empleado_id')
             ->join('cursos', 'cursos.id', '=', 'notas.curso_id')
@@ -51,6 +52,13 @@ class NotaController extends Controller
      */
     public function store(curso $curso, Request $request)
     {
+        $validateData = $request->validate([
+            'note' => 'required',
+            'time' => 'required',
+            'rut' => 'required|exists:empleados'
+            
+        ]);
+
          
         $rut = $request->input('rut');
       
@@ -67,7 +75,7 @@ class NotaController extends Controller
        
         $nota->save();
        
-        //return redirect()->route('cursos.cursos.notas') ->with('status', 'la nota a sido agregado correctamente.');
+        return redirect()->back()->with('status', 'la nota a sido agregado correctamente.');
     }
 
     /**

@@ -15,13 +15,16 @@ class EmpleadoController extends Controller
      */
     public function index(Empresa $empresa, Request $request)
     {
-        if($request->ajax()){
-            $empleados = $empresa->empleados;
-            return response()->json($empleados, 200);
-        }
-        $empleados = Empleado::all();
-
-        return view('empleado.index');
+        // if($request->ajax()){
+        //     $empleados = $empresa->empleados;
+        //     return response()->json($empleados, 200);
+        // }
+        
+       
+        $empleados = $empresa->empleados()->orderBy('id', 'ASC')->paginate(15);
+        
+            
+        return view('empleado.index', compact('empleados', 'empresa'));
     }
 
     /**
@@ -31,6 +34,10 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
+
+
+        
+
         return view('empleado.create');
     }
 
@@ -42,7 +49,13 @@ class EmpleadoController extends Controller
      */
     public function store(Empresa $empresa, Request $request)
     {
-        if($request->ajax()){
+        // if($request->ajax()){
+            $validateData = $request->validate([
+
+                'name' => 'required',
+                'rut' => 'required|unique:empleados'
+            ]);
+
         
             $empleado = new Empleado();
             $empleado->name = $request->input('name');
@@ -51,12 +64,13 @@ class EmpleadoController extends Controller
             $empleado->empresa()->associate($empresa)->save();
             $empleado->save();
 
-            return response()->json([
-                //"empresa" => $empresa,
-                "message" => "Empleado creado correctamente.",
-                "empleado" => $empleado
-            ], 200);    
-        }
+        //     return response()->json([
+        //         //"empresa" => $empresa,
+        //         "message" => "Empleado creado correctamente.",
+        //         "empleado" => $empleado
+        //     ], 200);    
+        // }
+        return redirect()->back()->with('status', 'El empleado a sido agregado con el rut '. $empleado->rut. ' correctamente.');
     }
 
     /**
@@ -77,8 +91,11 @@ class EmpleadoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   
+        $empleado = Empleado::findOrFail($id);
+        $empresas = Empresa::all();
+        
+        return view('empleado.edit', compact('empleado', 'empresas'));
     }
 
     /**
@@ -88,9 +105,20 @@ class EmpleadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Empleado $empleado)
     {
-        //
+        $validateData = $request->validate([
+
+            'name' => 'required',
+            'rut' => 'required',
+            'empresa_id'=> 'required']);
+            
+        $empleado->name = $request->input('name');
+        $empleado->rut = $request->input('rut');
+        $empleado->empresa_id = $request->input('empresa_id');
+        $empleado->save();
+        return redirect()->back()->with('status', 'El empleado a sido actualizado correctamente.');
+        
     }
 
     /**
@@ -101,6 +129,9 @@ class EmpleadoController extends Controller
      */
     public function destroy(Empleado $empleado)
     {
+        
         $empleado->delete();
+         return redirect()->back()->with('status', 'la nota a sido eliminado correctamente.');
+
     }
 }
