@@ -22,13 +22,17 @@ Route::resource('cursos','CursoController');
 
 
 //rutas para las empresas
-Route::resource('empresas','EmpresaController');
+//Route::resource('empresas','EmpresaController');
+
+
+
+
 
 //rutas para los empleados
-Route::get('empresas/{empresa}/empleados','EmpleadoController@index');
-Route::post('empresas/{empresa}/empleados','EmpleadoController@store');
-Route::get('empleados/{nota}/edit','EmpleadoController@edit');
-Route::resource('empleados','EmpleadoController');
+// Route::get('empresas/{empresa}/empleados','EmpleadoController@index');
+// Route::post('empresas/{empresa}/empleados','EmpleadoController@store');
+// Route::get('empleados/{nota}/edit','EmpleadoController@edit');
+//Route::resource('empleados','EmpleadoController');
 
 
 //ritas para las notas
@@ -69,6 +73,35 @@ Route::middleware(['auth'])->group(function () {
 		->middleware('permission:users.destroy');
 	Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
 		->middleware('permission:users.edit');
+
+		//empresas
+
+		//empresas
+		Route::post('empresas/store', 'EmpresaController@store')->name('empresas.store')
+		->middleware('permission:empresas.create');
+	Route::get('empresas', 'EmpresaController@index')->name('empresas.index')
+		->middleware('permission:empresas.index');
+	Route::get('empresas/create', 'EmpresaController@create')->name('empresas.create')
+		->middleware('permission:empresas.create');
+	Route::put('empresas/{empresa}', 'EmpresaController@update')->name('empresas.update')
+		->middleware('permission:empresas.edit');
+	Route::get('empresas/{empresa}', 'EmpresaController@show')->name('empresas.show')
+		->middleware('permission:empresas.show');
+	Route::delete('empresas/{empresa}', 'EmpresaController@destroy')->name('empresas.destroy')
+		->middleware('permission:empresas.destroy');
+	Route::get('empresas/{empresa}/edit', 'EmpresaController@edit')->name('empresas.edit')
+		->middleware('permission:empresas.edit');
+
+		//empleados
+		Route::get('empresas/{empresa}/empleados','EmpleadoController@index')->name('empleados.index')
+		->middleware('permission:empleados.index');
+		Route::post('empresas/{empresa}/empleados','EmpleadoController@store')->name('empleados.store')
+		->middleware('permission:empleados.create');
+		Route::get('empleados/{nota}/edit','EmpleadoController@edit')->name('empleados.edit')
+		->middleware('permission:empleados.edit');
+
+		Route::resource('empleados','EmpleadoController');
+
 	
 });
 

@@ -5,6 +5,8 @@
 
                         <h1>{{ $empresa->name}}</h1>
                         <p>{{ $empresa->description}}</p>
+                       
+                        @can('empleados.create')
                         @include('common.success')
                         @include('common.errors')
 
@@ -14,7 +16,7 @@
 
                         {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
                         {!! Form::close() !!}
-
+                        @endcan
                         <table id="empleados" class="table table-striped">
                         <thead>
                         <tr>
@@ -22,8 +24,7 @@
                             <th scope="col">nombre</th>
                             <th scope="col">rut</th>
 
-                            <th scope="col">Editar</th>
-                            <th scope="col">Eliminar</th>
+                            
                             
                         </tr>
                         </thead>
@@ -34,14 +35,20 @@
                                 <td>{{ $empleado->name}}</td>
                                 <td>{{ $empleado->rut}}</td>
                             
-
+                                @can('empleados.edit')  
                                 <td><a class="btn btn-primary" href="/empleados/{{ $empleado->id}}/edit">Editar</a></td>
+                            
+                                @endcan
+
+                                @can('empleados.destroy') 
                                 <td>
-                                {{ Form::open(['route' => ['empleados.destroy', $empleado->id], 'method' => 'DELETE']) }}
+                               
+                                    {{ Form::open(['route' => ['empleados.destroy', $empleado->id], 'method' => 'DELETE']) }}
                                     {{ Form::submit('Eliminar', ['class' => 'btn btn-danger', 'onClick' => 'return confirm("¿Seguro desea eliminar este registro?");']) }}
                                     {{ Form::close() }}
 
                                 </td>
+                                @endcan
                             </tr>
 
                         @endforeach

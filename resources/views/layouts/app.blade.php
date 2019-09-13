@@ -82,9 +82,25 @@
         <div class="row">
             <div class="col-md-2">
                 <nav class="nav flex-column">
-                    <a class="nav-link active" href="/cursos">Cursos</a>
-                    <a class="nav-link" href="/empresas">Empresas</a>
+                    @can('users.index')
+                         <a class="nav-link active" href="{{ route('users.index') }}">Usuarios</a>
+                    @endcan
+                    @can('roles.index')
+                        <a class="nav-link active" href="{{ route('roles.index') }}">Roles de Usuario</a>
+                    @endcan
+                    @can('cursos.index')
+                    <a class="nav-link active" href="{{ route('cursos.index') }}">Cursos</a>
+                @endcan
+                @can('empresas.index')
+                <a class="nav-link active" href="{{ route('empresas.index') }}">Empresas</a>
+            @endcan
+            
                     
+                    
+                    
+          
+
+
                   </nav>
             </div>
             <div class="col-sm-10">
