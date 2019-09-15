@@ -13,9 +13,10 @@
                 <th scope="col">Imagen</th>
                 <th scope="col">nombre</th>               
                 <th scope="col">Descripcion</th>
+                @can('notas.index')
                 <th scope="col">Ver Notas</th>
-                <th scope="col">Editar</th>
-                <th scope="col">Eliminar</th>
+                @endcan
+               
                 
               </tr>
             </thead>
@@ -28,22 +29,25 @@
                     <td>{{ $curso->descrip}}</td>
                    
                    
-                   
+                   @can('notas.index')
                     <td><a class="button" style="font-size: 15px;" title="Agregar notas" href="/cursos/{{ $curso->id}}/notas">
                       <span class="fas fa-eye fa-1x"></span>
                       </a></a></td>
+                      @endcan
 
                     
-                   
+                   @can('cursos.edit')
                     <td><a class="button" style="font-size: 15px;" title="Editar Curso" href="/cursos/{{ $curso->id}}/edit">
                       <span class="fas fa-pencil-alt fa-1x"></span>
                       </a></a></td>
-                   
+                      @endcan
+                   @can('cursos.destroy')
                     <td>
                        {!! Form::open(['route' => ['cursos.destroy', $curso->id], 'method' => 'DELETE']) !!}
                          {!! Form::submit('Eliminar', ['class' => 'btn btn-danger','onClick' => 'return confirm("¿Seguro desea eliminar este registro?");'  ]) !!}
                         {!! Form::close() !!}
                     </td>
+                    @endcan
                 </tr>
               @endforeach
               

@@ -102,6 +102,33 @@ Route::middleware(['auth'])->group(function () {
 
 		Route::resource('empleados','EmpleadoController');
 
+
+		
+//ritas para notas
+Route::get('cursos/{curso}/notas','NotaController@create')->name('notas.index')
+->middleware('permission:notas.index');
+Route::post('cursos/{curso}/notas','NotaController@store');
+Route::get('notas/{nota}/edit','NotaController@edit');
+Route::resource('notas','NotaController');
+
+
+
+//cursos
+Route::post('cursos/store', 'CursoController@store')->name('cursos.store')
+->middleware('permission:cursos.create');
+Route::get('cursos', 'CursoController@index')->name('cursos.index')
+->middleware('permission:cursos.index');
+Route::get('cursos/create', 'CursoController@create')->name('cursos.create')
+->middleware('permission:cursos.create');
+Route::put('cursos/{curso}', 'CursoController@update')->name('cursos.update')
+->middleware('permission:cursos.edit');
+Route::get('cursos/{curso}', 'CursoController@show')->name('cursos.show')
+->middleware('permission:cursos.show');
+Route::delete('cursos/{curso}', 'CursoController@destroy')->name('cursos.destroy')
+->middleware('permission:cursos.destroy');
+Route::get('cursos/{curso}/edit', 'CursoController@edit')->name('cursos.edit')
+->middleware('permission:cursos.edit');
+
 	
 });
 

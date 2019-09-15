@@ -5,13 +5,14 @@
     
     @include('common.success')
     @include('common.errors')
+    @can('notas.create')
     {!! Form::open(['route' => `cursos/{{ $curso->id }}/notas`, 'method' => 'POST', 'files' => true]) !!}
         
         @include('nota.form')
 
         {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
     {!! Form::close() !!}
-    
+    @endcan
 
 
 
@@ -23,8 +24,7 @@
             <th scope="col">nota</th>
             <th scope="col">tiempo</th>
             <th scope="col">Estado</th>
-            <th scope="col">Editar</th>
-            <th scope="col">Eliminar</th>
+            
             
           </tr>
         </thead>
@@ -41,13 +41,16 @@
             <td>Reprobado</td>
             @endif
 
-
+            @can('notas.edit')
                 <td><a class="btn btn-primary" href="/notas/{{ $empleado->id}}/edit">Editar</a></td>
+                @endcan
+                @can('notas.destroy')
                 <td>
                    {!! Form::open(['route' => ['notas.destroy', $empleado->id], 'method' => 'DELETE']) !!}
                      {!! Form::submit('Eliminar', ['class' => 'btn btn-danger']) !!}
                     {!! Form::close() !!}
                 </td>
+                @endcan
             </tr>
           @endforeach
           
