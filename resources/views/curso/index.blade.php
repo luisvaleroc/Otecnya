@@ -3,7 +3,9 @@
 @section('title', 'Cursos')
 @section('content')
   @include('common.success')
+  @can('cursos.create')
   <a class="btn btn-primary" href="/cursos/create">agregar</a>
+  @endcan
     <table  id="cursos" class="table table-striped">
     
       
@@ -13,9 +15,7 @@
                 <th scope="col">Imagen</th>
                 <th scope="col">nombre</th>               
                 <th scope="col">Descripcion</th>
-                @can('notas.index')
-                <th scope="col">Ver Notas</th>
-                @endcan
+     
                
                 
               </tr>
@@ -29,9 +29,14 @@
                     <td>{{ $curso->descrip}}</td>
                    
                    
+                    @can('notas.show')
+                    <td><a class="button" style="font-size: 15px;" title="ver notas de empleados" href="/cursos/{{ $curso->id}}/clientes">
+                      <span class="fas fa-eye fa-1x"></span>
+                      </a></a></td>
+                      @endcan
                    @can('notas.index')
                     <td><a class="button" style="font-size: 15px;" title="Agregar notas" href="/cursos/{{ $curso->id}}/notas">
-                      <span class="fas fa-eye fa-1x"></span>
+                      <span class="fas  fa-plus-square"></span>
                       </a></a></td>
                       @endcan
 

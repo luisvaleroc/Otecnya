@@ -129,6 +129,10 @@ Route::delete('cursos/{curso}', 'CursoController@destroy')->name('cursos.destroy
 Route::get('cursos/{curso}/edit', 'CursoController@edit')->name('cursos.edit')
 ->middleware('permission:cursos.edit');
 
+//cliente
+
+Route::get('cursos/{curso}/clientes', 'ClientController@show')->name('notas.show')
+->middleware('permission:notas.show');
 	
 });
 
