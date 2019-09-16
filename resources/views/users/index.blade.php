@@ -24,20 +24,30 @@
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 @can('users.show')
-                                <td width="10px">
+                               
+                                <td><a class="button" style="font-size: 15px;" title="ver Usuario" href="{{ route('users.show', $user->id) }}">
+                                    <span class="fas fa-eye fa-1x"></span>
+                                    </a></a></td>
+                               
+                                {{-- <td width="10px">
                                     <a href="{{ route('users.show', $user->id) }}" 
                                     class="btn btn-sm btn-default">
                                         ver
                                     </a>
-                                </td>
+                                </td> --}}
                                 @endcan
                                 @can('users.edit')
-                                <td width="10px">
+
+                                <td><a class="button" style="font-size: 15px;" title="ver Usuario" href="{{ route('users.edit', $user->id) }}">
+                                        <span class="fas fa-pencil-alt fa-1x"></span>
+                                        </a></a></td>
+
+                                {{-- <td width="10px">
                                     <a href="{{ route('users.edit', $user->id) }}" 
                                     class="btn btn-sm btn-default">
                                         editar
                                     </a>
-                                </td>
+                                </td> --}}
                                 @endcan
                                 @can('users.destroy')
                                 <td width="10px">

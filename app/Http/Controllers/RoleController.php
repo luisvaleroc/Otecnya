@@ -36,6 +36,11 @@ use Caffeinated\Shinobi\Models\Permission;
          */
         public function store(Request $request)
         {
+             $validateData = $request->validate([
+                'name' => 'required',
+                'slug' => 'required',
+               'description' => 'required'
+           ]);
             $role = Role::create($request->all());
             $role->permissions()->sync($request->get('permissions'));
             return redirect()->route('roles.edit', $role->id)

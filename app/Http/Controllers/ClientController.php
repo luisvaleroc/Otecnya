@@ -59,9 +59,10 @@ class ClientController extends Controller
             ->select('empleados.name','notas.note','notas.time', 'notas.id')
             ->where('cursos.id', $curso->id)
             ->where('empleados.empresa_id', auth()->user()->empresa_id)
-            ->get();
+            ->orderBy('id', 'desc')
+            ->paginate(15);
 
-            return view('nota.create', compact('curso', 'empleados'));
+            return view('cliente.index', compact('curso', 'empleados'));
     }
 
     /**

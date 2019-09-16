@@ -21,7 +21,7 @@ class EmpleadoController extends Controller
         // }
         
        
-        $empleados = $empresa->empleados()->orderBy('id', 'ASC')->paginate(15);
+        $empleados = $empresa->empleados()->orderBy('id', 'DESC')->paginate(15);
         
             
         return view('empleado.index', compact('empleados', 'empresa'));

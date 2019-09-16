@@ -30,20 +30,33 @@
                                 <td>{{ $role->id }}</td>
                                 <td>{{ $role->name }}</td>
                                 @can('roles.show')
-                                <td width="10px">
+
+                                <td><a class="button" style="font-size: 15px;" title="ver rol" href="{{ route('roles.show', $role->id) }}">
+                                        <span class="fas fa-eye fa-1x"></span>
+                                        </a></a></td>
+
+                                {{-- <td width="10px">
                                     <a href="{{ route('roles.show', $role->id) }}" 
                                     class="btn btn-sm btn-default">
                                         ver
                                     </a>
-                                </td>
+                                </td> --}}
                                 @endcan
+
+                                
                                 @can('roles.edit')
-                                <td width="10px">
+
+
+                                
+                                <td><a class="button" style="font-size: 15px;" title="ver rol" href="{{ route('roles.edit', $role->id) }}">
+                                        <span class="fas fa-pencil-alt fa-1x"></span>
+                                        </a></a></td>
+                                {{-- <td width="10px">
                                     <a href="{{ route('roles.edit', $role->id) }}" 
                                     class="btn btn-sm btn-default">
                                         editar
                                     </a>
-                                </td>
+                                </td> --}}
                                 @endcan
                                 @can('roles.destroy')
                                 <td width="10px">

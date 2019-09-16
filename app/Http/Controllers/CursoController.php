@@ -18,7 +18,12 @@ class CursoController extends Controller
     public function index(Request $request)
     {
        // $request->user()->authorizedRoles('admin');
-        $cursos = Curso::all();
+        //$cursos = Curso::all();
+        $cursos = Curso::orderBy('id', 'DESC')->paginate(15);
+        
+
+        
+        
 
         return view('curso.index', compact('cursos'));
     }
