@@ -37,8 +37,7 @@ class NotaController extends Controller
             ->select('empleados.name','notas.note','notas.time', 'notas.id')
             ->where('cursos.id', $curso->id)
             ->orderBy('id', 'desc')
-            ->paginate(15)
-            ->get();
+            ->paginate(15);
            
           
            

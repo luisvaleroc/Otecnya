@@ -3,8 +3,16 @@
 @section('title', 'Añadir Cursos')
 @section('content')
  
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
-    <table id="notas" class="table table-striped">
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+
+    <table id="notas2" class="table table-striped">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -40,17 +48,9 @@
 
 
 
-      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-
-
-      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-      
-      
-      <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-      
       <script>
       $(document).ready(function() {
-      $('#notas').DataTable();
+      $('#notas2').DataTable();
       } );
       
       </script>
