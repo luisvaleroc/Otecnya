@@ -1,1 +1,0 @@
-<Empleados-component></Empleados-component>

@@ -78,11 +78,17 @@ use Caffeinated\Shinobi\Models\Permission;
          */
         public function update(Request $request, $id)
         {
+            $validateData = $request->validate([
+                'name' => 'required',
+                'slug' => 'required',
+               'description' => 'required'
+           ]);
+
             $role = Role::find($id);
             $role->update($request->all());
             $role->permissions()->sync($request->get('permissions'));
             return redirect()->route('roles.edit', $role->id)
-                ->with('info', 'Rol guardado con éxito');
+                ->with('status', 'Rol guardado con éxito');
         }
         /**
          * Remove the specified resource from storage.
@@ -93,6 +99,6 @@ use Caffeinated\Shinobi\Models\Permission;
         public function destroy($id)
         {
             $role = Role::find($id)->delete();
-            return back()->with('info', 'Eliminado correctamente');
+            return back()->with('status', 'Eliminado correctamente');
         }
     }

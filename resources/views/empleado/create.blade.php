@@ -5,8 +5,6 @@
     
     @include('common.success')
     @include('common.errors')
-
-
     
     {!! Form::open(['route' => `empresas/{{ $empresa->id }}/empleados`, 'method' => 'POST', 'files' => true]) !!}
         

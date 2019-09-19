@@ -17,7 +17,7 @@
                         {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
                         {!! Form::close() !!}
                         @endcan
-                        <table id="empleados" class="table table-striped">
+                        <table id="empleados55" class="table table-striped">
                         <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -55,10 +55,7 @@
                         
                         </tbody>
                         </table>
-                        {{ $empleados->render() }}
-{{-- <modal-button-empleado></modal-button-empleado>
-<list-of-empleados></list-of-empleados>
-<create-form-empleado></create-form-empleado> --}}
+                  
 
 
 @endsection
@@ -77,7 +74,7 @@
 
 <script>
 $(document).ready(function() {
-$('#empleados').DataTable();
+$('#empleados55').DataTable();
 } );
 
 </script>

@@ -60,7 +60,7 @@ class ClientController extends Controller
             ->where('cursos.id', $curso->id)
             ->where('empleados.empresa_id', auth()->user()->empresa_id)
             ->orderBy('id', 'desc')
-            ->paginate(15);
+            ->get();
 
             return view('cliente.index', compact('curso', 'empleados'));
     }

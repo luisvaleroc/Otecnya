@@ -44,7 +44,6 @@
         </tbody>
       </table>
 
-      {{ $empleados->render() }}
 
 
 

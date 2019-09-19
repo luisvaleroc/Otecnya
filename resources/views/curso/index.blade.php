@@ -34,7 +34,7 @@
                       <span class="fas fa-eye fa-1x"></span>
                       </a></a></td>
                       @endcan
-                   @can('notas.index')
+                   @can('notas.create')
                     <td><a class="button" style="font-size: 15px;" title="Agregar notas" href="/cursos/{{ $curso->id}}/notas">
                       <span class="fas  fa-plus-square"></span>
                       </a></a></td>

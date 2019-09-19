@@ -1,8 +1,28 @@
+
+
+
 <div class="form-group">
 	{{ Form::label('name', 'Nombre de la etiqueta') }}
 	{{ Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) }}
 </div>
 <hr>
+
+<h3>Empresa</h3>
+<div class="form-group">
+<select name="empresa_id" id="empresa_id">
+	@if($user->empresa === null)
+
+	<option value=" ">Elija la empresa </option>
+	@else
+		<option value="{{$user->empresa_id}}">{{ $user->empresa->name}}</option> 
+	@endif
+		@foreach($empresas as $empresa)
+		<option value="{{$empresa->id}}">{{ $empresa->name}}</option> 
+		@endforeach
+    </select>
+</div>		
+
+
 <h3>Lista de roles</h3>
 <div class="form-group">
 	<ul class="list-unstyled">
@@ -20,3 +40,9 @@
 <div class="form-group">
 	{{ Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) }}
 </div>
+
+
+
+
+
+

@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+@include('common.errors')
+@include('common.success')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -53,7 +55,7 @@
                                 <td width="10px">
                                     {!! Form::open(['route' => ['users.destroy', $user->id], 
                                     'method' => 'DELETE']) !!}
-                                        <button class="btn btn-sm btn-danger">
+                                        <button class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro deseas eliminar este usuario?');"   >
                                             Eliminar
                                         </button>
                                     {!! Form::close() !!}

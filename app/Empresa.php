@@ -12,4 +12,8 @@ class Empresa extends Model
         return $this->hasMany('Otecnya\Empleado');
     }
    
+    public function users(){
+        return $this->hasMany('Otecnya\User');
+    }
+   
 }

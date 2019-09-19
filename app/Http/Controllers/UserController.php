@@ -3,6 +3,8 @@ namespace Otecnya\Http\Controllers;
 use Illuminate\Http\Request;
 use Caffeinated\Shinobi\Models\Role;
 use Otecnya\User;
+use Otecnya\Empresa;
+
 class UserController extends Controller
 {
     /**
@@ -36,7 +38,11 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $roles = Role::get();
-        return view('users.edit', compact('user', 'roles'));
+        $empresas = Empresa::all();
+       
+
+       
+         return view('users.edit', compact('user', 'roles', 'empresas'));
     }
     /**
      * Update the specified resource in storage.
@@ -47,11 +53,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $validateData = $request->validate([
+            'name' => 'required'
+            
+            
+        ]);
         $user = User::find($id);
         $user->update($request->all());
         $user->roles()->sync($request->get('roles'));
+    
+
         return redirect()->route('users.edit', $user->id)
-            ->with('info', 'Usuario guardado con éxito');
+            ->with('status', 'Usuario guardado con éxito');
     }
     /**
      * Remove the specified resource from storage.
@@ -62,6 +76,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id)->delete();
-        return back()->with('info', 'Eliminado correctamente');
+        return back()->with('status', 'Eliminado correctamente');
     }
 }

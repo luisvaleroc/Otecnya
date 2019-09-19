@@ -62,7 +62,7 @@
                                 <td width="10px">
                                     {!! Form::open(['route' => ['roles.destroy', $role->id], 
                                     'method' => 'DELETE']) !!}
-                                        <button class="btn btn-sm btn-danger">
+                                        <button class="btn btn-sm btn-danger"onclick="return confirm('¿Seguro deseas eliminar este rol?');" >
                                             Eliminar
                                         </button>
                                     {!! Form::close() !!}

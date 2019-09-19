@@ -46,7 +46,7 @@
                         
                       <td>
                        {!! Form::open(['route' => ['empresas.destroy', $empresa->id], 'method' => 'DELETE']) !!}
-                         {!! Form::submit('Eliminar', ['class' => ' btn btn-danger', 'onClick' => 'return confirm("¿Seguro desea eliminar este registro?");']) !!}
+                         {!! Form::submit('Eliminar', ['class' => ' btn btn-danger', 'onClick' => 'return confirm("¿Seguro desea eliminar esta empresa?. Este acción eliminara todos empleados y usuarios asociados a ella.");']) !!}
                         
                          {!! Form::close() !!}
                     </td>

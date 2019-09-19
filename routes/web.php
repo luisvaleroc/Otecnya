@@ -106,7 +106,7 @@ Route::middleware(['auth'])->group(function () {
 		
 //ritas para notas
 Route::get('cursos/{curso}/notas','NotaController@create')->name('notas.index')
-->middleware('permission:notas.index');
+->middleware('permission:notas.create');
 Route::post('cursos/{curso}/notas','NotaController@store');
 Route::get('notas/{nota}/edit','NotaController@edit');
 Route::resource('notas','NotaController');

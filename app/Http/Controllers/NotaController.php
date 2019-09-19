@@ -136,5 +136,6 @@ class NotaController extends Controller
     public function destroy(Nota $nota)
     {
         $nota->delete();
+        return redirect()->back()->with('status', 'la nota a sido eliminada correctamente.');
     }
 }
