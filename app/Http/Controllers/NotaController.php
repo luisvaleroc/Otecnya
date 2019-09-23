@@ -34,7 +34,8 @@ class NotaController extends Controller
         $empleados = DB::table('empleados')
             ->join('notas', 'empleados.id', '=', 'notas.empleado_id')
             ->join('cursos', 'cursos.id', '=', 'notas.curso_id')
-            ->select('empleados.name','notas.note','notas.time', 'notas.id')
+            ->join('empresas', 'empresas.id', '=', 'empleados.empresa_id')
+            ->select('empleados.name','notas.note','notas.time', 'notas.id', 'empresas.name as empresa_name', 'notas.observation')
             ->where('cursos.id', $curso->id)
             ->orderBy('id', 'desc')
             ->paginate(15);
@@ -71,8 +72,8 @@ class NotaController extends Controller
         $nota->note = $request->input('note');
         $nota->curso_id = $curso->id;
         $nota->empleado_id = $id_empleado;
-        
         $nota->time = $request->input('time');
+        $nota->observation = $request->input('observation');
        
         $nota->save();
        
@@ -118,6 +119,7 @@ class NotaController extends Controller
             
         $nota->note = $request->input('note');
         $nota->time = $request->input('time');
+        $nota->observation = $request->input('observation');
         // $nota->empleado_id = $request->input('empleado_id');
         // $nota->curso_id = $request->input('curso_id');
 

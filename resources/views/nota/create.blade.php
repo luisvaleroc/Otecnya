@@ -2,14 +2,6 @@
 
 @section('title', 'Añadir Cursos')
 @section('content')
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-
-
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
-
-<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-
     @include('common.success')
     @include('common.errors')
     @can('notas.create')
@@ -21,14 +13,15 @@
     {!! Form::close() !!}
     @endcan
 
-
     <table id="notas3" class="table table-striped">
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">nombre</th>
-            <th scope="col">nota</th>
-            <th scope="col">tiempo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Nota</th>
+            <th scope="col">Tiempo</th>
+            <th scope="col">Observación</th>
+            <th scope="col">Empresa</th>
             <th scope="col">Estado</th>
             
             
@@ -41,7 +34,9 @@
                 <td>{{ $empleado->name}}</td>
                 <td>{{ $empleado->note}}</td>
                 <td>{{ $empleado->time}}</td>
-                @if ($empleado->note > 80)
+                <td>{{ $empleado->observation}}</td>
+                <td>{{ $empleado->empresa_name}}</td>
+                @if ($empleado->note > 70)
                 <td>Aprobado</td>
             @else
             <td>Reprobado</td>
@@ -64,17 +59,18 @@
       </table>
 
 
-      {{ $empleados->render() }}
+      {{-- {{ $empleados->render() }} --}}
 
 
 
       <script>
-      $(document).ready(function() {
-      $('#notas3').DataTable();
-      } );
-      
-      </script>
-      
+        $(document).ready(function() {
+        $('#notas3').DataTable();
+        } );
+        
+        </script>
+        
+  
 
 
     

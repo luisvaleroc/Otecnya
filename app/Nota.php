@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Nota extends Model
 {
-    protected $fillable = ['note', 'time','empleado_id','curso_id'];
+    protected $fillable = ['note', 'time','empleado_id','curso_id', 'observation'];
 
     public function empleado(){
         return $this->belongsTo('Otecnya\Empleado');

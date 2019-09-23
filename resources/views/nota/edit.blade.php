@@ -5,7 +5,7 @@
     @include('common.errors')
     @include('common.success')
 
-
+    <h2>{{$nota->empleado->name}}</h2>
     {!! Form::model($nota, ['route' => ['notas.update', $nota], 'method' => 'PUT']) !!}
 
     <div class="form-group">
@@ -15,6 +15,11 @@
     <div class="form-group">
         {!! Form::label('time', 'Tiempo') !!}
         {!! Form::text('time', null ,['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('observacition', 'Observación') !!}
+        {!! Form::textarea('observation', null ,['class' => 'form-control']) !!}
     </div>
 
 
