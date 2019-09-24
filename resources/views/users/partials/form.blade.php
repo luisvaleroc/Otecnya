@@ -2,8 +2,15 @@
 
 
 <div class="form-group">
-	{{ Form::label('name', 'Nombre de la etiqueta') }}
+	{{ Form::label('name', 'Nombre del Usuario') }}
 	{{ Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) }}
+</div>
+<hr>
+
+<div class="form-group">
+	{{ Form::label('password', 'Cambiar contraseña') }}
+	<br/>
+	<input type="text" name="password2"><br>
 </div>
 <hr>
 

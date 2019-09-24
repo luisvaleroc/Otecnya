@@ -134,7 +134,13 @@ Route::get('cursos/{curso}/edit', 'CursoController@edit')->name('cursos.edit')
 Route::get('cursos/{curso}/clientes', 'ClientController@show')->name('notas.show')
 ->middleware('permission:notas.show');
 	
+//excel
+Route::get('clientes/export/{curso}', 'ClientController@export')->name('excel.show')->middleware('permission:notas.show');
+
 });
+
+
+
 
 
 

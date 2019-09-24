@@ -8,6 +8,12 @@ use  Otecnya\Empresa;
 use  Otecnya\Curso;
 use  Otecnya\Nota;
 
+
+use Otecnya\Exports\NotasExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+
+
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
@@ -98,4 +104,28 @@ class ClientController extends Controller
     {
         //
     }
+
+    public function export( Curso $curso) 
+    {
+
+
+
+        $notas =   DB::table('empleados')
+        ->join('notas', 'empleados.id', '=', 'notas.empleado_id')
+        ->join('cursos', 'cursos.id', '=', 'notas.curso_id')
+        ->select('empleados.name','notas.note','notas.time', 'notas.id', 'notas.observation')
+        ->where('cursos.id', $curso->id)
+        ->where('empleados.empresa_id', auth()->user()->empresa_id)
+        ->orderBy('id', 'desc')
+        ->get();
+
+        //return Excel::download(new NotasExport, 'empleados.xlsx');
+       // return (new  NotasExport($cursos))->download('cursos.tsv', \Maatwebsite\Excel\Excel::TSV);
+        // $cursos = $curso->id;
+        // return (new NotasExport(2019))->download('invoices.xlsx');
+
+       
+      return Excel::download(new NotasExport($notas), 'empleados.xlsx');
+    }
+
 }

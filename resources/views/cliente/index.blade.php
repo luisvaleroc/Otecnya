@@ -3,8 +3,10 @@
 @section('title', 'Añadir Cursos')
 @section('content')
  
-
-
+@can('empresas.create')
+<a class="btn btn-primary" href="{{ route('excel.show', $curso->id) }}">Descargar</a>
+@endcan
+<br>
     <table id="notas2" class="table table-striped">
         <thead>
           <tr>

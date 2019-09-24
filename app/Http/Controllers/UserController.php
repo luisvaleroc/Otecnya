@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Caffeinated\Shinobi\Models\Role;
 use Otecnya\User;
 use Otecnya\Empresa;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -59,7 +60,13 @@ class UserController extends Controller
             
             
         ]);
+       
         $user = User::find($id);
+
+        if($request->input('password2')){
+            $user->password =  Hash::make($request->input('password2'));
+            }
+           
         $user->update($request->all());
         $user->roles()->sync($request->get('roles'));
     

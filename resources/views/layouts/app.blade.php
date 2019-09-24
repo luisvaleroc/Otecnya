@@ -34,9 +34,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/otecnya.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="app2">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -88,43 +89,42 @@
             </div>
         </nav>
         <!-- contenido-->
-        <div class="row">
-            <div class="col-md-2">
-                <nav class="nav flex-column">
-                    @can('users.index')
-                         <a class="nav-link active" href="{{ route('users.index') }}">Usuarios</a>
-                    @endcan
-                    @can('roles.index')
-                        <a class="nav-link active" href="{{ route('roles.index') }}">Roles de Usuario</a>
-                    @endcan
-                    @can('cursos.index')
-                    <a class="nav-link active" href="{{ route('cursos.index') }}">Cursos</a>
-                @endcan
-                @can('empresas.index')
-                <a class="nav-link active" href="{{ route('empresas.index') }}">Empresas</a>
-            @endcan
+        <header class="masthead">
+            <div class="container2 h-100">
             
-                    
-                    
-                    
-          
-
-
-                  </nav>
+                <div class="col-12 ">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <nav class="nav flex-column">
+                                @can('users.index')
+                                     <a class="nav-link active" href="{{ route('users.index') }}">Usuarios</a>
+                                @endcan
+                                @can('roles.index')
+                                    <a class="nav-link active" href="{{ route('roles.index') }}">Roles de Usuario</a>
+                                @endcan
+                                @can('cursos.index')
+                                <a class="nav-link active" href="{{ route('cursos.index') }}">Cursos</a>
+                            @endcan
+                            @can('empresas.index')
+                            <a class="nav-link active" href="{{ route('empresas.index') }}">Empresas</a>
+                        @endcan
+                        
+                              </nav>
+                        </div>
+                        <div class="col-sm-10">
+                                @yield('content')
+                           
+                
+                        </div>
+                      
+                </div>
+              </div>
             </div>
-            <div class="col-sm-10">
-   
-    
-                <main class="container">
-                    @yield('content')
-                </main>
-    
-            </div>
-          </div>
+          </header>
           <!-- fin contenido -->
        
     </div>
-    
+   
   
    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 
