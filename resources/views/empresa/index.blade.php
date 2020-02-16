@@ -10,7 +10,7 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">nombre</th>
+                <th scope="col">Nombre</th>
                 <th scope="col">Descripcion</th>
                 {{-- <th scope="col">Empleados</th>
                 <th scope="col">Editar</th>
@@ -30,7 +30,7 @@
                     @can('empleados.index')
                     
                     <td><a class="button" style="font-size: 15px;" title="Empleados" href="/empresas/{{ $empresa->id}}/empleados">
-                      <span class="fas fa-eye fa-1x"></span>
+                      <span class="fas  fa-plus-square"></span>
                       </a></a></td>
                       @endcan
 

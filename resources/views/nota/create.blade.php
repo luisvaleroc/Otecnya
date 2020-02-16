@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'A帽adir Cursos')
+@section('title', 'A帽adir Notas')
 @section('content')
     @include('common.success')
     @include('common.errors')
@@ -13,11 +13,14 @@
     {!! Form::close() !!}
     @endcan
 
+   
+   
     <table id="notas3" class="table table-striped">
         <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
+            <th scope="col">Rut</th>
             <th scope="col">Nota</th>
             <th scope="col">Tiempo</th>
             <th scope="col">Observaci贸n</th>
@@ -32,6 +35,7 @@
             <tr>
                 <th scope="row">{{ $empleado->id}}</th>
                 <td>{{ $empleado->name}}</td>
+                <td>{{ $empleado->rut}}</td>
                 <td>{{ $empleado->note}}</td>
                 <td>{{ $empleado->time}}</td>
                 <td>{{ $empleado->observation}}</td>
@@ -48,7 +52,7 @@
                 @can('notas.destroy')
                 <td>
                    {!! Form::open(['route' => ['notas.destroy', $empleado->id], 'method' => 'DELETE']) !!}
-                     {!! Form::submit('Eliminar', ['class' => 'btn btn-danger']) !!}
+                      {{ Form::submit('Eliminar', ['class' => 'btn btn-danger', 'onClick' => 'return confirm("¿Seguro desea eliminar este registro?");']) }}
                     {!! Form::close() !!}
                 </td>
                 @endcan
@@ -58,8 +62,7 @@
         </tbody>
       </table>
 
-
-      {{-- {{ $empleados->render() }} --}}
+    {{-- {{ $empleados->render() }} --}}
 
 
 
@@ -71,7 +74,5 @@
         </script>
         
   
-
-
-    
+  
 @endsection

@@ -35,7 +35,7 @@ class NotaController extends Controller
             ->join('notas', 'empleados.id', '=', 'notas.empleado_id')
             ->join('cursos', 'cursos.id', '=', 'notas.curso_id')
             ->join('empresas', 'empresas.id', '=', 'empleados.empresa_id')
-            ->select('empleados.name','notas.note','notas.time', 'notas.id', 'empresas.name as empresa_name', 'notas.observation')
+            ->select('empleados.name','notas.note','notas.time', 'notas.id', 'empresas.name as empresa_name', 'notas.observation', 'empleados.rut')
             ->where('cursos.id', $curso->id)
             ->orderBy('id', 'desc')
             ->paginate(15);

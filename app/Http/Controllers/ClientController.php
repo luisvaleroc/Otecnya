@@ -62,7 +62,7 @@ class ClientController extends Controller
         $empleados = DB::table('empleados')
             ->join('notas', 'empleados.id', '=', 'notas.empleado_id')
             ->join('cursos', 'cursos.id', '=', 'notas.curso_id')
-            ->select('empleados.name','notas.note','notas.time', 'notas.id', 'notas.observation')
+            ->select('empleados.name','notas.note','notas.time', 'notas.id', 'notas.observation', 'empleados.rut')
             ->where('cursos.id', $curso->id)
             ->where('empleados.empresa_id', auth()->user()->empresa_id)
             ->orderBy('id', 'desc')

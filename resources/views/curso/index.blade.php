@@ -4,7 +4,7 @@
 @section('content')
   @include('common.success')
   @can('cursos.create')
-  <a class="btn btn-primary" href="/cursos/create">agregar</a>
+  <a class="btn btn-primary" href="/cursos/create">Agregar</a>
   @endcan
     <table  id="cursos" class="table table-striped">
     
@@ -13,7 +13,7 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Imagen</th>
-                <th scope="col">nombre</th>               
+                <th scope="col">Nombre</th>               
                 <th scope="col">Descripcion</th>
      
                

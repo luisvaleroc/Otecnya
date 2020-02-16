@@ -21,8 +21,8 @@
                         <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">nombre</th>
-                            <th scope="col">rut</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Rut</th>
 
                             
                             

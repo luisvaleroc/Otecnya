@@ -32,6 +32,20 @@ class ApiController extends Controller
     public function addnotas(Request $request)
     {
       
+	$empleados = Empleado::where('rut', $request->input('rut') );
+
+	if (!isset ($empleados  )) {
+
+      
+
+            $empleado = new Empleado();
+            $empleado->name = $request->input('name');
+            $empleado->rut = $request->input('rut');
+            $empleado->empresa_id = $request->input('empresa_id');
+            //$empleado->empresa()->associate($request->input('empresa');)->save();
+            $empleado->save();
+
+        }
         $validateData = $request->validate([
             'note' => 'required',
             'time' => 'required',
@@ -51,7 +65,9 @@ class ApiController extends Controller
             $nota->empleado_id = $id_empleado;
             
             $nota->time = $request->input('time');
+            
            
+            $nota->observation= $request->input('observation');
             $nota->save();
            
         
